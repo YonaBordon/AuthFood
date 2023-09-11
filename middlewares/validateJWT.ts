@@ -29,6 +29,7 @@ const validateJWT = async (req: Request, res: Response, next: NextFunction) => {
 
 		req.body.user = user;
 		next();
+		
 	} catch (error: any) {
 		console.log(error);
 		if (error.name === 'TokenExpiredError') {

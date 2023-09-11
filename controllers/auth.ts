@@ -9,7 +9,6 @@ export const loginGoogle = async (req: Request, res: Response) => {
 
 	try {
 		const { name, email, img } = await googleVerify(id_token);
-		console.log('Controlador', name);
 		let user = await User.findOne({ email });
 
 		if (!user) {
@@ -31,6 +30,7 @@ export const loginGoogle = async (req: Request, res: Response) => {
 			data: user,
 			token,
 		});
+		console.log('Controlador: Bienvenido', name);
 	} catch (error) {
 		res.status(400).json({
 			msg: 'Token de Google no válido',

@@ -20,7 +20,6 @@ const loginGoogle = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
     const { id_token } = req.body;
     try {
         const { name, email, img } = yield (0, google_verify_1.default)(id_token);
-        console.log('Controlador', name);
         let user = yield users_1.default.findOne({ email });
         if (!user) {
             const data = {
@@ -38,6 +37,7 @@ const loginGoogle = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
             data: user,
             token,
         });
+        console.log('Controlador: Bienvenido', name);
     }
     catch (error) {
         res.status(400).json({

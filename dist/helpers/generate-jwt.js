@@ -8,7 +8,7 @@ const generateJWT = (uid, userName) => {
     return new Promise((resolve, reject) => {
         const payload = { uid, userName };
         jsonwebtoken_1.default.sign(payload, process.env.SECRETORPRIVATEKEY, {
-            expiresIn: '5m',
+            expiresIn: '30m',
         }, (err, token) => {
             if (err) {
                 console.log(err);

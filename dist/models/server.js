@@ -16,12 +16,14 @@ const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
 const auth_1 = __importDefault(require("../routes/auth"));
 const recipes_1 = __importDefault(require("../routes/recipes"));
+const favourites_1 = __importDefault(require("../routes/favourites"));
 const config_1 = __importDefault(require("../database/config"));
 class Server {
     constructor() {
         var _a;
         this.apiPaths = {
             auth: '/api/auth',
+            favourites: '/api/favourites',
             recipe: '/api/recipe',
         };
         this.app = (0, express_1.default)();
@@ -43,6 +45,7 @@ class Server {
     }
     routes() {
         this.app.use(this.apiPaths.auth, auth_1.default);
+        this.app.use(this.apiPaths.favourites, favourites_1.default);
         this.app.use(this.apiPaths.recipe, recipes_1.default);
     }
     middlewares() {

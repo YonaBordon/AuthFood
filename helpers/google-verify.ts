@@ -13,7 +13,6 @@ async function googleVerify(token: string) {
 	});
 
 	const { name, email, picture: img } = ticket.getPayload()!;
-	console.log('PAYLOAD DESDE FUNCION', ticket.getPayload()!);
 	return { name, email, img };
 }
 

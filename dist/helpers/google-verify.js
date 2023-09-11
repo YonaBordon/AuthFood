@@ -21,7 +21,6 @@ function googleVerify(token) {
             //[CLIENT_ID_1, CLIENT_ID_2, CLIENT_ID_3]
         });
         const { name, email, picture: img } = ticket.getPayload();
-        console.log('PAYLOAD DESDE FUNCION', ticket.getPayload());
         return { name, email, img };
     });
 }

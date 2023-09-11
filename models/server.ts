@@ -3,6 +3,7 @@ import cors from 'cors';
 
 import authRoute from '../routes/auth';
 import recipeRoute from '../routes/recipes';
+import favouritesRoute from '../routes/favourites';
 
 import mongoDBConnection from '../database/config';
 
@@ -11,6 +12,7 @@ class Server {
 	private port: string | number;
 	private apiPaths = {
 		auth: '/api/auth',
+		favourites: '/api/favourites',
 		recipe: '/api/recipe',
 	};
 
@@ -36,6 +38,7 @@ class Server {
 
 	routes() {
 		this.app.use(this.apiPaths.auth, authRoute);
+		this.app.use(this.apiPaths.favourites, favouritesRoute);
 		this.app.use(this.apiPaths.recipe, recipeRoute);
 	}
 
